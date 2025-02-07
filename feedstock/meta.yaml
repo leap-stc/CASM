@@ -1,20 +1,17 @@
-title: "LEAP Data Library Prototype"
+title: "CASM"
 description: >
-  A prototype test for the LEAP Data Library refactor
+  CASM: A long-term Consistent Artificial-intelligence based Soil Moisture dataset based on machine learning and remote sensing
 recipes:
-  - id: "small"
-    object: "recipe:small"
-  - id: "large"
-    object: "recipe:large"
+  - id: "casm"
+    object: "recipe:casm"
 provenance:
   providers:
-    - name: "Julius"
-      description: "Just a guy testing some recipes. Nothing to see here."
+    - name: "Zenodo"
+      description: "https://zenodo.org/records/7072512#.Y01cQi-B2-u"
       roles:
-        - producer
-        - licensor
-  license: "Just a Test"
+        - DOI
 maintainers:
-  - name: "Julius Busecke"
-    orcid: "0000-0001-8571-865X"
-    github: jbusecke
+  - name: "Raphael Hagen"
+    github: norlandrhagen
+  - name: "Mitra Cattry"
+    github: mitraA90

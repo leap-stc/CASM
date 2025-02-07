@@ -1,6 +1,8 @@
 # This logic only works locally on the LEAP-Pangeo hub (or similar Jupyterhubs)
 import os
 import subprocess
+import s3fs
+
 user = os.environ['JUPYTERHUB_USER']
 
 #TODO: factor this out into an importable function and import here and in config_local.py
@@ -15,9 +17,20 @@ except subprocess.CalledProcessError as e:
 BUCKET_PREFIX = f"gs://leap-scratch/{user}/{repo_name}"
 print(f"{BUCKET_PREFIX=}")
 
-c.Bake.prune = 1
+
+access_key_id = os.environ['access_key_id']
+secret_access_key = os.environ['secret_access_key']
+
+write_fs = s3fs.S3FileSystem(
+    key=access_key_id, secret=secret_access_key, client_kwargs={'endpoint_url': "https://nyu1.osn.mghpcc.org"}
+)
+
+
+c.Bake.prune = True
 c.Bake.bakery_class = "pangeo_forge_runner.bakery.local.LocalDirectBakery"
-c.TargetStorage.fsspec_class = "gcsfs.GCSFileSystem"
+
 c.InputCacheStorage.fsspec_class = "gcsfs.GCSFileSystem"
-c.TargetStorage.root_path = f"{BUCKET_PREFIX}/output/{{job_name}}"
 c.InputCacheStorage.root_path = f"{BUCKET_PREFIX}/cache/"
+
+c.TargetStorage.fsspec_class = "s3fs.S3FileSystem"
+c.TargetStorage.root_path = f"leap-pangeo-pipeline/CASM/"
