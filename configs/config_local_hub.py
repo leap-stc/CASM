@@ -18,8 +18,8 @@ BUCKET_PREFIX = f"gs://leap-scratch/{user}/{repo_name}"
 print(f"{BUCKET_PREFIX=}")
 
 
-access_key_id = os.environ['access_key_id']
-secret_access_key = os.environ['secret_access_key']
+access_key_id = os.environ['OSN_LEAP_PIPELINE_KEY']
+secret_access_key = os.environ['OSN_LEAP_PIPELINE_KEY_SECRET']
 
 write_fs = s3fs.S3FileSystem(
     key=access_key_id, secret=secret_access_key, client_kwargs={'endpoint_url': "https://nyu1.osn.mghpcc.org"}
