@@ -33,4 +33,5 @@ c.InputCacheStorage.fsspec_class = "gcsfs.GCSFileSystem"
 c.InputCacheStorage.root_path = f"{BUCKET_PREFIX}/cache/"
 
 c.TargetStorage.fsspec_class = "s3fs.S3FileSystem"
+c.TargetStore.fsspec_args = {'key':access_key_id, 'secret': secret_access_key, 'client_kwargs':{'endpoint_url': "https://nyu1.osn.mghpcc.org"}}
 c.TargetStorage.root_path = f"leap-pangeo-pipeline/CASM/"
