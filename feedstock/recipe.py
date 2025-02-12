@@ -10,7 +10,8 @@ from dataclasses import dataclass
 import apache_beam as beam
 import numpy as np
 import xarray as xr
-from leap_data_management_utils.data_management_transforms import InjectAttrs
+
+# from leap_data_management_utils.data_management_transforms import InjectAttrs
 from pangeo_forge_recipes.patterns import pattern_from_file_sequence
 from pangeo_forge_recipes.transforms import (
     ConsolidateDimensionCoordinates,
@@ -67,13 +68,13 @@ casm = (
     | OpenWithXarray()
     | RenameDate()
     | StoreToZarr(
-        store_name='casm.zarr',
+        store_name='casm1.zarr',
         combine_dims=pattern.combine_dim_keys,
         # target_chunks={
         #     '#todo!
         # },
     )
-    | InjectAttrs()
+    # | InjectAttrs()
     | ConsolidateDimensionCoordinates()
     | ConsolidateMetadata()
 )
