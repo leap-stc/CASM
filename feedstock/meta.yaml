@@ -7,10 +7,11 @@ recipes:
 provenance:
   providers:
     - name: "Zenodo"
-      description: https://zenodo.org/records/7072512#.Y01cQi-B2-u
+      description: "Zenodo"
       roles:
-        - archive
-        - doi
+        - host
+      url: https://zenodo.org/records/7072512#.Y01cQi-B2-u
+  license: "unknown"
 maintainers:
   - name: "Raphael Hagen"
     github: norlandrhagen
