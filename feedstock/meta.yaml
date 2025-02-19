@@ -7,9 +7,10 @@ recipes:
 provenance:
   providers:
     - name: "Zenodo"
-      description: "https://zenodo.org/records/7072512#.Y01cQi-B2-u"
+      description: https://zenodo.org/records/7072512#.Y01cQi-B2-u
       roles:
-        - DOI
+        - archive
+        - doi
 maintainers:
   - name: "Raphael Hagen"
     github: norlandrhagen
